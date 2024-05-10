@@ -9,17 +9,27 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		Perso p = new Perso(1000,120,100,200);
+		Perso p = new Perso("Paulo",1000,120,100,200);
 		
-		Mob m = new Mob(3000,50,300);
+		Mob m = new Mob("goblin",3000,120,300);
 		
 		p.atacar(m);
 		
-		Perso a = new Archer(750, 160, 120, 150);
+		Perso a = new Archer("Legolas",750, 160, 120, 150);
 		
 		a.atacar(m);
 		
-		Perso h = new Healer(1500,90,150,125);
+		Perso h = new Healer("Falin",1500,90,150,125);
+		
+		h.skill(a);
+		
+		a.skill(m);
+		
+		m.atack(h);
+		
+		h.skill(h);
+		
+		m.atack(a);
 		
 		h.skill(a);
 	}

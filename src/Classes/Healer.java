@@ -2,14 +2,15 @@ package Classes;
 
 public class Healer extends Perso{
 
-	public Healer(int vida, int atq, int vel, int def) {
-		super(vida, atq, vel, def);
+	public Healer(String name, int vida, int atq, int vel, int def) {
+		super(name, vida, atq, vel, def);
+		this.agro = 80;
 	}
 	
 	public void atacar(Mob m) {
 		double dano = 1.5*this.pa - 0.5*m.pd;
 		if(dano >= m.pv) {
-			System.out.println("o mob morreu");
+			System.out.println(m.name + " morreu");
 		}else {
 			m.pv = m.pv - (int)dano;
 			System.out.println("voce causou " + dano + " de dano.");
@@ -19,15 +20,17 @@ public class Healer extends Perso{
 	
 	public void skill(Perso p) {
 		if(p.pv == 0) {
-			System.out.println("O personagem a ser curado morreu");
+			System.out.println(p.name + "morreu");
 		}else if(p.pv == p.max_pv) {
-			System.out.println("O personagem estao com a vida maxima");
+			System.out.println(p.name + " esta com a vida maxima");
 		}else {
 			int heal = (int) (0.2*this.max_pv);
 			if(p.pv + heal > p.max_pv) {
 				p.pv = p.max_pv;
+				System.out.println(p.name + " foi curado em " + heal + " por " + this.name + " e agora está com " + p.pv + " de vida.");
 			}else {
 				p.pv = p.pv + heal;
+				System.out.println(p.name + " foi curado em " + heal + " por " + this.name + " e agora está com " + p.pv + " de vida.");
 			}
 		}
 	}
