@@ -1,21 +1,36 @@
 package Classes;
 
+import java.util.ArrayList;
+
 public class Perso extends Creatures{
 	
+	int id;
 	int max_pv;
 	int pv;
+	int max_pa;
 	int pa;
+	int max_vel;
 	int vel;
+	int max_pd;
 	int pd;
+	int max_energy;
+	int energy;
 	int agro;
+	int meelee;
 	String name;
+	ArrayList<Effect> effects = new ArrayList<Effect>();
 	
-	public Perso(String name,int vida, int atq, int vel, int def) {
-		this.pd = def;
-		this.pa = atq;
-		this.vel = vel;
+	public Perso(String name,int vida, int atq, int vel, int def, int energy) {
+		this.max_pd = def;
+		this.max_pa = atq;
+		this.max_vel = vel;
 		this.max_pv = vida;
+		this.max_energy = energy;
 		this.pv = this.max_pv;
+		this.pd = this.max_pd;
+		this.pa = this.max_pa;
+		this.vel = this.max_vel;
+		this.energy = 0;
 		this.name = name;
 		
 	}
@@ -37,12 +52,12 @@ public class Perso extends Creatures{
 	}
 
 	public void skill(Perso a) {
-		// TODO Auto-generated method stub
+		// skill to heal//buff
 		
 	}
 	
 	public void skill(Mob m) {
-		// TODO Auto-generated method stub
+		// skill to atack
 		
 	}
 	

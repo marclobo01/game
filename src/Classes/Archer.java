@@ -2,10 +2,10 @@ package Classes;
 
 public class Archer extends Perso{
 
-	public Archer(String name,int vida, int atq, int vel, int def) {
-		super(name, vida, atq, vel, def);
+	public Archer(String name,int vida, int atq, int vel, int def, int energy) {
+		super(name, vida, atq, vel, def, energy);
 		this.agro = 100;
-		
+		this.meelee = 0;
 	}
 	
 	public void atacar(Mob m) {
@@ -31,9 +31,5 @@ public class Archer extends Perso{
 	}
 
 	
-	public void skill() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

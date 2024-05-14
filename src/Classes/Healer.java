@@ -2,9 +2,10 @@ package Classes;
 
 public class Healer extends Perso{
 
-	public Healer(String name, int vida, int atq, int vel, int def) {
-		super(name, vida, atq, vel, def);
+	public Healer(String name,int vida, int atq, int vel, int def, int energy) {
+		super(name, vida, atq, vel, def, energy);
 		this.agro = 80;
+		this.meelee = 0;
 	}
 	
 	public void atacar(Mob m) {
