@@ -3,15 +3,21 @@ package Classes;
 public class Mob extends Creatures{
 	
 	String name;
+	int max_pv;
 	int pv;
+	int max_pa;
 	int pa;
 	int vel;
+	int max_pd;
 	int pd;
 	
 	public Mob(String nome, int vida, int atq, int def) {
 		this.pv = vida;
+		this.max_pv = vida;
 		this.pa = atq;
+		this.max_pa = atq;
 		this.pd = def;
+		this.max_pd = def;
 		this.vel = 100;
 		this.name = nome;
 	}

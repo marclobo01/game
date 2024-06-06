@@ -3,7 +3,7 @@ package main;
 import Classes.Archer;
 import Classes.Healer;
 import Classes.Mob; // vida atq def
-import Classes.Perso; // vida atq vel def
+//import Classes.Perso; // vida atq vel def
 import Classes.Turn;
 
 public class main {
@@ -14,7 +14,7 @@ public class main {
 		Archer arch2 = new Archer("Lucas", 600,100,150,70,80);
 		Healer heal = new Healer("Sara",900,80,120,80,60);
 		
-		Mob goblin = new Mob("Goblin", 500, 120, 100);
+		Mob goblin = new Mob("Goblin", 100, 120, 100);
 		Mob alf = new Mob("Ticotico", 800, 100, 50);
 		
 		Turn novo = new Turn();

@@ -43,6 +43,7 @@ public class Perso extends Creatures{
 	public void atacar(Mob m) {
 		double dano = 1.5*this.pa - 0.5*m.pd;
 		if(dano >= m.pv) {
+			m.pv = 0;
 			System.out.println(m.name + " morreu");
 		}else {
 			m.pv = m.pv - (int)dano;
