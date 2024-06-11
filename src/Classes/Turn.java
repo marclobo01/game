@@ -1,18 +1,20 @@
 package Classes;
 
 import java.util.ArrayList; // import the ArrayList class
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Turn {
 	
-	ArrayList<Creatures> jogo = new ArrayList<Creatures>();
+	ArrayList<Perso> game = new ArrayList<Perso>();
+	ArrayList<Mob> mob = new ArrayList<Mob>();
 	
 	Scanner scan = new Scanner(System.in);
 	Random rand = new Random();
 	
 	
-	public void check(Creatures c) {
+	public void check(Perso c) {
 		if(c instanceof Perso) {
 			if(((Perso)c).effects != null) {
 				for(int i = 0;i < (((Perso)c).effects).size(); i++) {
@@ -26,7 +28,129 @@ public class Turn {
 		}
 	}
 	
-	public void start(Perso p, Perso q, Perso r, Mob a, Mob b) {
+	
+	// inicialisando a lista inicial com os personagens
+	
+	public void start(Perso ...persos) {
+		for(Perso item: persos) {
+			game.add(item);
+		}
+		
+		Collections.sort(game);
+		
+	}
+	
+	public void start(Mob ...mobs) {
+		for(Mob item: mobs) {
+			mob.add(item);
+		}
+		Collections.sort(mob);
+	}
+	
+	public void addGame(Perso p) {
+		p.ap = 10000/p.max_vel;
+		game.add(p);
+		Collections.sort(game);
+	}
+	
+	public void addGame(Mob m) {
+		m.ap = 10000/m.vel;
+		mob.add(m);
+		Collections.sort(mob);
+	}
+	
+	public void removeGame() {
+		
+		Perso aux;
+		Mob other;
+		
+		aux = game.get(0);
+		other = mob.get(0);
+		
+		if(aux.ap <= other.ap) {
+			game.remove(0);
+			
+			for(int i = 0; i < game.size(); i++) {
+				game.get(i).ap -= aux.ap;
+			}
+			for(int i = 0; i < mob.size(); i++) {
+				mob.get(i).ap -= aux.ap;
+			}
+			Collections.sort(game);
+			this.addGame(aux);
+		}else {
+			mob.remove(0);
+			
+			for(int i = 0; i < game.size(); i++) {
+				game.get(i).ap -= other.ap;
+			}
+			for(int i = 0; i < mob.size(); i++) {
+				mob.get(i).ap -= other.ap;
+			}
+			Collections.sort(mob);
+			this.addGame(other);
+		}
+		
+		
+		
+	}
+	
+	public void printGame() {
+		
+		Perso aux;
+		Mob other;
+		
+		int j = 0;
+		int k = 0;
+		
+		
+		
+		while(j < game.size() && k < mob.size()) {
+			aux = game.get(j);
+			other = mob.get(k);
+			
+			if(aux.ap <= other.ap) {
+				System.out.print(game.get(j).name + " ==== ");
+				System.out.println(game.get(j).ap);
+				System.out.println(game.get(j).vel);
+				j++;
+			}else {
+				System.out.print(mob.get(k).name + " ==== ");
+				System.out.println(mob.get(k).ap);
+				System.out.println(mob.get(k).vel);
+				k++;
+			}
+			
+		}
+		
+		
+		
+		for(int tam = j;tam < game.size(); tam++) {
+			System.out.print(game.get(tam).name + " ==== ");
+			System.out.println(game.get(tam).ap);
+			System.out.println(game.get(tam).vel);
+		}
+		
+		for(int tam = k;tam < mob.size(); tam++) {
+			System.out.print(mob.get(tam).name + " ==== ");
+			System.out.println(mob.get(tam).ap);
+			System.out.println(mob.get(tam).vel);
+		}
+		
+	}
+	
+	public void playGame(Mob m) {
+		
+	}
+	
+	public void playGame(Perso p) {
+		
+	}
+	
+/*	public void start(Perso p, Perso q, Perso r, Mob a, Mob b) {
+		
+		inutil -------------------------------------------------
+		
 		if(p.vel >= q.vel) {
 			if(q.vel >= r.vel) { // p > q > r
 				jogo.add(p);
@@ -59,6 +183,8 @@ public class Turn {
 			}
 			
 		}
+		
+		----------------------------------------------------------------------
 		
 		if(a.vel >= b.vel) {
 			jogo.add(a);
@@ -137,5 +263,5 @@ public class Turn {
 			System.out.println("------------------------------------------------");
 		}
 		
-	}
+	}*/
 }

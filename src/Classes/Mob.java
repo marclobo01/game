@@ -1,6 +1,6 @@
 package Classes;
 
-public class Mob extends Creatures{
+public class Mob implements Comparable<Mob>{
 	
 	String name;
 	int max_pv;
@@ -10,6 +10,7 @@ public class Mob extends Creatures{
 	int vel;
 	int max_pd;
 	int pd;
+	int ap;
 	
 	public Mob(String nome, int vida, int atq, int def) {
 		this.pv = vida;
@@ -20,6 +21,7 @@ public class Mob extends Creatures{
 		this.max_pd = def;
 		this.vel = 100;
 		this.name = nome;
+		this.ap = 10000/vel;
 	}
 	
 	public void atack(Perso p) {
@@ -32,5 +34,14 @@ public class Mob extends Creatures{
 			System.out.println("agora,"+ p.name +" tem " + p.pv + " de vida.");
 		}
 	}
+	
+	@Override public int compareTo(Mob other) { 
+		if (this.ap < other.ap) { 
+		  return -1; 
+		  } if (this.ap > other.ap) { 
+		  return 1; 
+		  } 
+		  return 0; 
+		 }
 	
 }

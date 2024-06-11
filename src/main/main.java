@@ -18,7 +18,40 @@ public class main {
 		Mob alf = new Mob("Ticotico", 800, 100, 50);
 		
 		Turn novo = new Turn();
-		novo.start(heal, arch, arch2, alf, goblin);
+		novo.start(heal, arch, arch2);
+		novo.start(alf,goblin);
+		
+		novo.printGame();
+		
+		novo.removeGame();
+		
+		System.out.println("------------------------------");
+		
+		novo.printGame();
+		
+		novo.removeGame();
+		
+		System.out.println("------------------------------");
+		
+		novo.printGame();
+		
+		novo.removeGame();
+		
+		System.out.println("------------------------------");
+		
+		novo.printGame();
+		
+		novo.removeGame();
+		
+		System.out.println("------------------------------");
+		
+		novo.printGame();
+		
+		novo.removeGame();
+		
+		System.out.println("------------------------------");
+		
+		novo.printGame();
 		
 	}
 

@@ -2,7 +2,7 @@ package Classes;
 
 import java.util.ArrayList;
 
-public class Perso extends Creatures{
+public class Perso implements Comparable<Perso>{
 	
 	int id;
 	int max_pv;
@@ -17,6 +17,7 @@ public class Perso extends Creatures{
 	int energy;
 	int agro;
 	int meelee;
+	int ap;
 	String name;
 	ArrayList<Effect> effects = new ArrayList<Effect>();
 	
@@ -32,6 +33,7 @@ public class Perso extends Creatures{
 		this.vel = this.max_vel;
 		this.energy = 0;
 		this.name = name;
+		this.ap = 10000/vel;
 		
 	}
 	
@@ -61,6 +63,15 @@ public class Perso extends Creatures{
 		// skill to atack
 		
 	}
+	
+	@Override public int compareTo(Perso other) { 
+		if (this.ap < other.ap) { 
+		  return -1; 
+		  } if (this.ap > other.ap) { 
+		  return 1; 
+		  } 
+		  return 0; 
+		 }
 	
 	
 	
