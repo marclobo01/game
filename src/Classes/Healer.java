@@ -8,6 +8,8 @@ public class Healer extends Perso{
 		this.meelee = 0;
 	}
 	
+	
+	@Override
 	public void atacar(Mob m) {
 		double dano = 1.5*this.pa - 0.5*m.pd;
 		if(dano >= m.pv) {

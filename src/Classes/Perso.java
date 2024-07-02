@@ -5,16 +5,22 @@ import java.util.ArrayList;
 public class Perso implements Comparable<Perso>{
 	
 	int id;
+	
 	int max_pv;
 	int pv;
+	
 	int max_pa;
 	int pa;
+	
 	int max_vel;
 	int vel;
+	
 	int max_pd;
 	int pd;
+	
 	int max_energy;
 	int energy;
+	
 	int agro;
 	int meelee;
 	int ap;
