@@ -12,14 +12,14 @@ public class Mob implements Comparable<Mob>{
 	int pd;
 	int ap;
 	
-	public Mob(String nome, int vida, int atq, int def) {
+	public Mob(String nome, int vida, int atq, int def, int vel) {
 		this.pv = vida;
 		this.max_pv = vida;
 		this.pa = atq;
 		this.max_pa = atq;
 		this.pd = def;
 		this.max_pd = def;
-		this.vel = 100;
+		this.vel = vel;
 		this.name = nome;
 		this.ap = 10000/vel;
 	}

@@ -14,44 +14,14 @@ public class main {
 		Archer arch2 = new Archer("Lucas", 600,100,150,70,80);
 		Healer heal = new Healer("Sara",900,80,120,80,60);
 		
-		Mob goblin = new Mob("Goblin", 100, 120, 100);
-		Mob alf = new Mob("Ticotico", 800, 100, 50);
+		Mob goblin = new Mob("Goblin", 900, 120, 100,130);
+		Mob alf = new Mob("Ticotico", 820, 100, 50,70);
 		
 		Turn novo = new Turn();
 		novo.start(heal, arch, arch2);
 		novo.start(alf,goblin);
 		
-		novo.printGame();
-		
-		novo.removeGame();
-		
-		System.out.println("------------------------------");
-		
-		novo.printGame();
-		
-		novo.removeGame();
-		
-		System.out.println("------------------------------");
-		
-		novo.printGame();
-		
-		novo.removeGame();
-		
-		System.out.println("------------------------------");
-		
-		novo.printGame();
-		
-		novo.removeGame();
-		
-		System.out.println("------------------------------");
-		
-		novo.printGame();
-		
-		novo.removeGame();
-		
-		System.out.println("------------------------------");
-		
-		novo.printGame();
+		novo.loop();
 		
 	}
 

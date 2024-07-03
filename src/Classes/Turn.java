@@ -96,6 +96,11 @@ public class Turn {
 				mob.get(i).ap -= aux.ap;
 			}
 			Collections.sort(game);
+			
+			printGame();
+			aux.ap = 0;
+			printa(aux);
+			
 			playGame(aux);
 			this.addGame(aux);
 			
@@ -109,6 +114,11 @@ public class Turn {
 				mob.get(i).ap -= other.ap;
 			}
 			Collections.sort(mob);
+			
+			printGame();
+			other.ap = 0;
+			printa(other);
+			
 			playGame(other);
 			this.addGame(other);
 		}
@@ -134,14 +144,10 @@ public class Turn {
 			other = mob.get(k);
 			
 			if(aux.ap <= other.ap) {
-				System.out.print(game.get(j).name + " ==== ");
-				System.out.println(game.get(j).ap);
-				System.out.println(game.get(j).vel);
+				printa(aux);
 				j++;
 			}else {
-				System.out.print(mob.get(k).name + " ==== ");
-				System.out.println(mob.get(k).ap);
-				System.out.println(mob.get(k).vel);
+				printa(other);
 				k++;
 			}
 			
@@ -150,16 +156,14 @@ public class Turn {
 		// como uma lista é maior q a outra, termina de printar os itens q faltavam
 		
 		for(int tam = j;tam < game.size(); tam++) {
-			System.out.print(game.get(tam).name + " ==== ");
-			System.out.println(game.get(tam).ap);
-			System.out.println(game.get(tam).vel);
+			printa(game.get(tam));
 		}
 		
 		for(int tam = k;tam < mob.size(); tam++) {
-			System.out.print(mob.get(tam).name + " ==== ");
-			System.out.println(mob.get(tam).ap);
-			System.out.println(mob.get(tam).vel);
+			printa(mob.get(tam));
 		}
+		
+		System.out.println("\n --------------------\n");
 		
 	}
 	
@@ -241,11 +245,20 @@ public class Turn {
 					System.out.println(i + ":" + n.name);
 				}
 				
+				System.out.println(game.size() + ":" + p.name);
+				
+				
 				choice = scan.nextInt();
 				
-				n = game.get(choice);
+				if(choice == game.size()) {
+					p.skill(p);
+				}else {
+					n = game.get(choice);
+					
+					p.skill(n);
+				}
 				
-				p.skill(n);
+			
 				
 				
 			}else if(p instanceof Archer) {
@@ -274,7 +287,23 @@ public class Turn {
 	
 	public void loop() {
 		
+		while(game.size() != 0 && mob.size() != 0) {
+			removeGame();
+		}
+		
+		System.out.println("O combate acabou: FIM");
+		
+		
 	}
+	
+	public void printa(Perso p) {
+		System.out.println(p.name + ": \n" + "Vida: " + p.pv + " de " + p.max_pv + "\nValor de ação: " + p.ap + "\n -----------");
+	}
+	
+	public void printa(Mob p) {
+		System.out.println(p.name + ": \n" + "Vida: " + p.pv + " de " + p.max_pv + "\nValor de ação: " + p.ap + "\n -----------");
+	}
+	
 	
 /*	public void start(Perso p, Perso q, Perso r, Mob a, Mob b) {
 		
